@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>quotes</title>
+    <style>
+        body {
+            display:flex;
+            flex-direction:column;
+            align-items:center;
+            justify-content:center;
+            height:100vh;
+            margin:0;
+            font-family: 'Times New Roman', Times, serif;
+        }
+        button {
+            font-size:20px;
+            padding:10px 20px;
+            margin-bottom:20px;
+            cursor:pointer;
+        }
+        #quotes {
+            font-size:24px; 
+            font-weight:bold; 
+            margin-top:20px; 
+            text-align:center; 
+        }
+        #colorCode {
+            font-size:18px; 
+            text-align:center; 
+            margin-bottom:20px; 
+        }
+    </style>
+</head>
+ <body>
+    <div id="colorCode"></div>  
+    <div id="quotes"></div>
+    <button id="btn">Click me for a quote</button>
+    <script>
+         color=()=>{
+            let hexNumbers="0123456789ABCD";
+            let hexColorCode="#"
+            for (let i=0;i<6;i++){
+                hexColorCode +=hexNumbers[Math.floor(Math.random()*14)];
+            }
+            return hexColorCode;}
+        const quotes=[
+             "Practice makes mans perfect",
+             "Failure is the stepping stone to success",
+             "Success is a journey,not a destination",
+             "You dont have to be great to start,but you have start to be great",
+             "if u want to live a happy life tie it to a goal, not to people",
+             
+        ];
+        const randomQuote=()=>{
+            let res='';
+            for (let i=0;i<quotes.length;i++){ 
+                let Index=Math.floor(Math.random()*quotes.length);
+                res=quotes[Index];
+            }
+            return res;
+        };
+            let btn=document.getElementById("btn");
+            btn.addEventListener("click",()=>{
+            document.body.style.backgroundColor=color();
+            document.getElementById("colorCode").innerHTML=color();
+            document.getElementById("quotes").innerHTML=randomQuote();
+        });
+    </script>
+</body>
+</html> 
